@@ -9,6 +9,7 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
+	id 'maven-publish'
 }
 
 repositories {
@@ -33,4 +34,30 @@ dependencies {
 tasks.named('test') {
     // Use junit platform for unit tests.
     useJUnitPlatform()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/Pabdomcam1/flyweightpattern")
+            credentials {
+            //las propiedades gpr.user y gpr.key están configuradas en gradle.properties en el raiz del proyecto, y se añade a .gitignore para que no se suban
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+                }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+         //Del tutorial https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven
+        
+            groupId = 'MIT.FS'
+            artifactId = 'flyweightpattern'
+            version = 'v.0.0_PruebaPractica'
+
+            from components.java
+        }
+       
+    }
 }
