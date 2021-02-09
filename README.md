@@ -5,4 +5,4 @@ Joshi y que se encuentra disponible en:
 https://www.javacodegeeks.com/2015/09/java-design-patterns.html
 El patrón aquí presentado es Flyweight Pattern disponible en https://www.javacodegeeks.com/2015/09/flyweight-design-pattern.html 
 
-Se añade testCPPPlatform para probar la clase CPPPlatform y comprobar que se crea y configura correctamente
+Se añade testJavaPlatform para probar la clase JavaPlatform y comprobar que se crea y configura correctamente
